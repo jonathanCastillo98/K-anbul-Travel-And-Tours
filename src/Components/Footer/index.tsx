@@ -3,7 +3,7 @@ import './footer.css'
 import video from '../../assets/playa4.mp4'
 
 import { FiSend } from 'react-icons/fi'
-import { MdOutlineTravelExplore } from 'react-icons/md'
+import kanbul from '../../assets/kanbul.png'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FiChevronRight } from 'react-icons/fi'
 
@@ -36,8 +36,7 @@ const Footer = () => {
                     <div className="footerIntro flex">
                         <div className="logoDiv">
                             <a href="#" className="logo flex">
-                                <MdOutlineTravelExplore className="icon" />
-                                Travel.
+                                <h2><img src={kanbul} alt={kanbul} className="icon" /> K'anbul Travel and Tours </h2>
                             </a>
                         </div>
 
@@ -113,7 +112,7 @@ const Footer = () => {
                             </li>
                         </div>
 
-                        <div className="linkGroup">
+                        {/* <div className="linkGroup">
                             <span className="groupTitle">
                                 LAST MINUTE
                             </span>
@@ -142,7 +141,7 @@ const Footer = () => {
                                 <FiChevronRight className="icon" />
                                 Oceania
                             </li>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="footerDiv flex">

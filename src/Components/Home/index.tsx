@@ -20,7 +20,7 @@ const Home = () => {
 
                     <span className="smallText">The world is huge!</span>
 
-                    <h1 className="homeTitle">Search your holidays</h1>
+                    <h1 className="homeTitle">Follow your dreams</h1>
 
                 </div>
 
@@ -45,7 +45,7 @@ const Home = () => {
 
                         <div className="label_total flex">
                             <label htmlFor="price">Max price:</label>
-                            <h3 className="total">%5000</h3>
+                            <h3 className="total">$5000</h3>
                         </div>
 
                         <div className="input flex">
@@ -66,11 +66,6 @@ const Home = () => {
                     <div className="rightIcons">
                         <FiFacebook className="icon" />
                         <AiOutlineInstagram className="icon" />
-                    </div>
-
-                    <div className="leftIcons">
-                        <BsListTask className="icon" />
-                        <TbApps className="icon" />
                     </div>
 
                 </div>

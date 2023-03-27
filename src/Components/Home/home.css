@@ -163,16 +163,6 @@
     width: -moz-max-content;
     width: max-content;
   }
-  .home .homeContent .textDiv .homeTitle::after {
-    position: absolute;
-    content: "";
-    background: var(--SecondaryColor);
-    height: 5px;
-    width: 145px;
-    right: 0px;
-    bottom: 5px;
-    z-index: -1;
-  }
   .home .homeContent .cardDiv {
     grid-template-columns: repeat(2, 1fr);
   }

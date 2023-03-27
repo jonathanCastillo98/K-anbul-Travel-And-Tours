@@ -43,15 +43,15 @@ const Navbar = () => {
                         </li>
 
                         <li className="navItem">
+                            <a href="#" className="navLink">Car Rental</a>
+                        </li>
+
+                        <li className="navItem">
+                            <a href="#" className="navLink">Tours</a>
+                        </li>
+
+                        <li className="navItem">
                             <a href="#" className="navLink">About</a>
-                        </li>
-
-                        <li className="navItem">
-                            <a href="#" className="navLink">Pages</a>
-                        </li>
-
-                        <li className="navItem">
-                            <a href="#" className="navLink">News</a>
                         </li>
 
                         <li className="navItem">

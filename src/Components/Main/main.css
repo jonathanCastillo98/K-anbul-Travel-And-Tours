@@ -24,16 +24,6 @@
   margin: 1rem;
   z-index: 2;
 }
-.main .secTitle .title::after {
-  position: absolute;
-  content: "";
-  background: var(--SecondaryColor);
-  height: 5px;
-  width: 120px;
-  right: 0;
-  bottom: 5px;
-  z-index: -1;
-}
 .main .secContent {
   justify-content: center;
   gap: 1.5rem;
@@ -135,9 +125,6 @@
 @media screen and (min-width: 500px) {
   .title {
     font-size: 1.5rem;
-  }
-  .title::after {
-    width: 155px !important;
   }
   .secContent {
     grid-template-columns: repeat(2, 1fr);
