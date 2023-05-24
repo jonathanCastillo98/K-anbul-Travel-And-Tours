@@ -1,0 +1,65 @@
+.navbarAdmin {
+  position: relative;
+  height: 50px;
+  border-bottom: 0.5px solid rgb(231, 228, 228);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.navbarAdmin .wrapperNavAdmin {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbarAdmin .wrapperNavAdmin .search {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid lightgray;
+  padding: 3px;
+}
+.navbarAdmin .wrapperNavAdmin .search input {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.navbarAdmin .wrapperNavAdmin .search input::-moz-placeholder {
+  font-size: 12px;
+}
+.navbarAdmin .wrapperNavAdmin .search input::placeholder {
+  font-size: 12px;
+}
+.navbarAdmin .wrapperNavAdmin .items {
+  display: flex;
+  align-items: center;
+}
+.navbarAdmin .wrapperNavAdmin .items .item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+  position: relative;
+}
+.navbarAdmin .wrapperNavAdmin .items .item .icon {
+  font-size: 20px;
+}
+.navbarAdmin .wrapperNavAdmin .items .item .avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+.navbarAdmin .wrapperNavAdmin .items .item .counter {
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}/*# sourceMappingURL=navbarAdmin.css.map */
