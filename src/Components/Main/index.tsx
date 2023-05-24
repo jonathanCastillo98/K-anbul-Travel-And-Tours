@@ -1,11 +1,15 @@
-import './main.css'
+import '../../../styles/css/main.css'
 
-import { data } from './data'
+import mockData from './data'
+import useFetch from '../../hooks/useFetch'
 
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { HiOutlineClipboardCheck } from 'react-icons/hi'
 
 const Main = () => {
+    const { data, loading, error } = useFetch("http://localhost:3000/api/v1/hotels/countByCity?cities=Merida,Motul");
+
+    console.log(data)
     return (
         <section className="main container section">
 
@@ -15,7 +19,7 @@ const Main = () => {
 
             <div className="secContent grid">
                 {
-                    data.map(({ id, imgSrc, destTitle, location, grade, fees, description }) => {
+                    mockData.map(({ id, imgSrc, destTitle, location, grade, fees, description }) => {
                         return (
                             <div key={id} className="singleDestination">
 

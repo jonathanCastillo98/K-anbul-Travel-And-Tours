@@ -1,0 +1,73 @@
+.reserve {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.418);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.reserve .reserveContainer {
+  background-color: white;
+  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+}
+.reserve .reserveContainer .reserveClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.reserve .reserveContainer .rItem {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 20px;
+}
+.reserve .reserveContainer .rItem .rItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.reserve .reserveContainer .rItem .rItemInfo .rTitle {
+  font-weight: 500;
+}
+.reserve .reserveContainer .rItem .rItemInfo .rDescription {
+  font-weight: 300;
+}
+.reserve .reserveContainer .rItem .rItemInfo .rMax {
+  font-size: 12px;
+}
+.reserve .reserveContainer .rItem .rItemInfo .rPrice {
+  font-weight: 500;
+}
+.reserve .reserveContainer .rItem .rSelectedRooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  font-size: 8px;
+  color: gray;
+}
+.reserve .reserveContainer .rItem .rSelectedRooms .room {
+  display: flex;
+  flex-direction: column;
+}
+.reserve .reserveContainer .rButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  margin-top: 20px;
+}
+.reserve .reserveContainer .rButton:disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}/*# sourceMappingURL=reserve.css.map */

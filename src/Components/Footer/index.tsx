@@ -1,4 +1,4 @@
-import './footer.css'
+import '../../../styles/css/footer.css'
 
 import video from '../../assets/playa4.mp4'
 

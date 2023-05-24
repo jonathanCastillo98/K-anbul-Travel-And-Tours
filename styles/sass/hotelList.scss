@@ -1,0 +1,109 @@
+:root {
+    --PrimaryColor: hsl(199, 100%, 33%);
+    --SecondaryColor: hsl(187, 85%, 43%);
+    --GradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+    --WhiteColor: hsl(0, 0%, 100%);
+    --BlackColor: hsl(201, 33%, 16%);
+    --TextColor: hsl(240, 4%, 36%);
+    --WhiteColorDeam: hsl(0, 0%, 93%);
+    --GreyText: rgb(190, 190, 190);
+    --InputColor: rgb(239, 239, 239);
+    --BodyColor: rgb(240, 240, 246);
+    --CardBG: rgb(255, 255, 235);
+}
+
+.wrapper{
+    width: 98.7vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    .listContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    
+        .listWrapper {
+            width: 100%;
+            max-width: 1024px;
+            display: flex;
+            gap: 20px;
+    
+            .listSearch {
+                flex: 1;
+                background: var(--GradientColor);
+                box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+                padding: 10px;
+                border-radius: 10px;
+                position: sticky;
+                top: 10px;
+                height: max-content;
+    
+                .lsTitle{
+                    font-size: 20px;
+                    color: var(--WhiteColor);
+                    margin-bottom: 10px;
+                }
+    
+                .lsItem{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin-bottom: 10px;
+    
+                    .lsOptions{
+                        padding: 10px;
+    
+                        .lsOptionItem{
+                            display: flex;
+                            justify-content: space-between;
+                            margin-bottom: 10px;
+                            color: black;
+                            font-size: 12px;
+    
+                            .lsOptionInput{
+                                width: 50px;
+                            }
+                        }
+                    }
+                }
+    
+                .lsItem>label{
+                    font-size: 12px;
+                }
+    
+                 .lsItem>input{
+                    height: 30px;
+                    border: none;
+                    padding: 5px;
+                }
+                .lsItem>span{
+                    height: 30px;
+                    padding: 5px;
+                    background-color: white;
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                }
+    
+            }
+    
+            .listSearch>button{
+                padding: 10px;
+                background-color: #0071c2;
+                color: white;
+                border: none;
+                width: 100%;
+                font-weight: 500;
+                cursor: pointer;
+            }
+    
+             .listResult {
+                flex: 3;
+            }
+        }
+      }
+      
+}
