@@ -4,13 +4,17 @@ import { useState } from "react";
 import axios from "axios";
 import useFetch from "../../../../../../hooks/useFetch";
 import { hotelInputs } from "../../../../../../formSource";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../../../../../redux/store";
 
 const NewHotel = () => {
     const [files, setFiles] = useState("");
     const [info, setInfo] = useState({});
     const [rooms, setRooms] = useState([]);
 
-    const { data, loading, error } = useFetch("/rooms");
+    const { data, loading, error } = useFetch("http://localhost:3000/api/v1/rooms");
+    const userState = useSelector((store: AppStore) => store.user);
+    const token = userState.token;
 
     const handleChange = (e) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -24,8 +28,6 @@ const NewHotel = () => {
         setRooms(value);
     };
 
-    console.log(files)
-
     const handleClick = async (e) => {
         e.preventDefault();
         try {
@@ -35,7 +37,7 @@ const NewHotel = () => {
                     data.append("file", file);
                     data.append("upload_preset", "upload");
                     const uploadRes = await axios.post(
-                        "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+                        "https://api.cloudinary.com/v1_1/jonathancastillo/image/upload",
                         data
                     );
 
@@ -49,8 +51,13 @@ const NewHotel = () => {
                 rooms,
                 photos: list,
             };
+            const listhotels = await axios.post("http://localhost:3000/api/v1/hotels", newhotel, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
 
-            await axios.post("/hotels", newhotel);
+
+            });
         } catch (err) { console.log(err) }
     };
     return (
@@ -110,7 +117,7 @@ const NewHotel = () => {
                                         ? "loading"
                                         : data &&
                                         data.map((room) => (
-                                            <option key={room._id} value={room._id}>
+                                            <option key={room.id} value={room.id}>
                                                 {room.title}
                                             </option>
                                         ))}

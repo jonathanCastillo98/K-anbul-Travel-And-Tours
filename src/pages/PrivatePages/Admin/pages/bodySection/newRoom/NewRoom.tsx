@@ -4,13 +4,18 @@ import { useState } from "react";
 import axios from "axios";
 import useFetch from "../../../../../../hooks/useFetch";
 import { roomInputs } from "../../../../../../formSource";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../../../../../redux/store";
 
 const NewRoom = () => {
     const [info, setInfo] = useState({});
     const [hotelId, setHotelId] = useState(undefined);
     const [rooms, setRooms] = useState([]);
 
-    const { data, loading, error } = useFetch("/hotels");
+    const { data, loading, error } = useFetch("http://localhost:3000/api/v1/hotels");
+    const userState = useSelector((store: AppStore) => store.user);
+    const token = userState.token;
+
 
     const handleChange = (e) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -20,7 +25,12 @@ const NewRoom = () => {
         e.preventDefault();
         const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
         try {
-            await axios.post(`/rooms/${hotelId}`, { ...info, roomNumbers });
+            console.log(hotelId)
+            await axios.post(`http://localhost:3000/api/v1/rooms/${hotelId}`, { ...info, roomNumbers }, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                },
+            });
         } catch (err) {
             console.log(err);
         }
@@ -64,7 +74,7 @@ const NewRoom = () => {
                                         ? "loading"
                                         : data &&
                                         data.map((hotel) => (
-                                            <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+                                            <option key={hotel.id} value={hotel.id}>{hotel.name}</option>
                                         ))}
                                 </select>
                             </div>

@@ -18,18 +18,17 @@ const New = ({ inputs, title }) => {
         data.append("upload_preset", "upload");
         try {
             const uploadRes = await axios.post(
-                "https://api.cloudinary.com/v1_1/lamadev/image/upload",
+                "https://api.cloudinary.com/v1_1/jonathancastillo/image/upload",
                 data
             );
 
             const { url } = uploadRes.data;
-
             const newUser = {
                 ...info,
                 img: url,
             };
 
-            await axios.post("/auth/register", newUser);
+            await axios.post("http://localhost:3000/api/v1/auth/register", newUser);
         } catch (err) {
             console.log(err);
         }
