@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useState } from 'react'
 import { useDataContext } from '../../context/SearchContext'
 import axios from 'axios'
+import { BASE_URL } from '../../models'
 
 type Props = {
     setOpenModal: React.Dispatch<React.SetStateAction<boolean>>,
@@ -12,7 +13,7 @@ type Props = {
 
 const Reserve = ({ setOpenModal, hotelId }: Props) => {
 
-    const { data, loading, error } = useFetch(`http://localhost:3000/api/v1/hotels/room/${hotelId}`);
+    const { data, loading, error } = useFetch(`${BASE_URL}/hotels/room/${hotelId}`);
     const { dates } = useDataContext();
 
     const getDatesInRange = (startDate: Date, endDate: Date) => {

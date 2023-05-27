@@ -12,6 +12,7 @@ import { useDataContext } from "../../../context/SearchContext";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../../redux/store";
 import Reserve from "../../../Components/Reserve";
+import { BASE_URL } from "../../../models";
 
 const HotelReview = () => {
     const [slideNumber, setSlideNumber] = useState(0);
@@ -22,8 +23,7 @@ const HotelReview = () => {
     const obj = useParams();
     const hotelId = String(obj.id);
 
-    // ME quede donde tengo que hacer fetch al hotel pero necesito el parametro, hay una mejor opcion que la del <video!!!></video!!!>
-    const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/api/v1/hotels/${hotelId}`);
+    const { data, loading, error, reFetch } = useFetch(`${BASE_URL}/hotels/${hotelId}`);
 
     const { dates, options } = useDataContext();
 

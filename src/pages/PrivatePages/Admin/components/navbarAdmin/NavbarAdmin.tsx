@@ -6,9 +6,11 @@ import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../../../../redux/store";
 
 const NavbarAdmin = () => {
-
+    const userState = useSelector((store: AppStore) => store.user);
     return (
         <div className="navbarAdmin">
             <div className="wrapperNavAdmin">
@@ -43,7 +45,7 @@ const NavbarAdmin = () => {
                     </div>
                     <div className="item">
                         <img
-                            src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                            src={userState.img}
                             alt=""
                             className="avatar"
                         />

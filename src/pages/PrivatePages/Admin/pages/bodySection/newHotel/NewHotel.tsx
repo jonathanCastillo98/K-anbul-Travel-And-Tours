@@ -6,13 +6,14 @@ import useFetch from "../../../../../../hooks/useFetch";
 import { hotelInputs } from "../../../../../../formSource";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../../../../../redux/store";
+import { BASE_URL } from "../../../../../../models";
 
 const NewHotel = () => {
     const [files, setFiles] = useState("");
     const [info, setInfo] = useState({});
     const [rooms, setRooms] = useState([]);
 
-    const { data, loading, error } = useFetch("http://localhost:3000/api/v1/rooms");
+    const { data, loading, error } = useFetch(`${BASE_URL}/rooms`);
     const userState = useSelector((store: AppStore) => store.user);
     const token = userState.token;
 
@@ -51,7 +52,7 @@ const NewHotel = () => {
                 rooms,
                 photos: list,
             };
-            const listhotels = await axios.post("http://localhost:3000/api/v1/hotels", newhotel, {
+            const listhotels = await axios.post(`${BASE_URL}/hotels`, newhotel, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 },

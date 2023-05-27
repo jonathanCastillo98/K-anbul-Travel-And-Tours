@@ -7,6 +7,7 @@ import { DateRange } from "react-date-range";
 import SearchItem from "./components/SearchItem/SearchItem";
 import useFetch from "../../../hooks/useFetch";
 import { useDataContext } from "../../../context/SearchContext";
+import { BASE_URL } from "../../../models";
 
 const HotelList = () => {
     const { destination,
@@ -23,7 +24,7 @@ const HotelList = () => {
     const [min, setMin] = useState(undefined);
     const [max, setMax] = useState(undefined);
 
-    const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/api/v1/hotels?city=${destination}&min=${min || 0}&max=${max || 10000}`);
+    const { data, loading, error, reFetch } = useFetch(`${BASE_URL}/hotels?city=${destination}&min=${min || 0}&max=${max || 10000}`);
     console.log(data)
 
     const handleOnClick = () => {

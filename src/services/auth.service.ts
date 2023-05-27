@@ -1,5 +1,5 @@
-const tokenUrl = "http://localhost:3000/api/v1/auth/login"
-
+import { BASE_URL } from "../models"
+const tokenUrl = `${BASE_URL}/auth/login`
 export const getUserToken = (username: string, password: string) => {
 
     const data = {

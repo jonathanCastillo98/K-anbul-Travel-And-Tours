@@ -6,6 +6,7 @@ import useFetch from "../../../../../hooks/useFetch";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../../../../redux/store";
+import { BASE_URL } from "../../../../../models";
 
 const Datatable = ({ columns }) => {
   // To navigate other parte of the app
@@ -17,7 +18,7 @@ const Datatable = ({ columns }) => {
   // Routes
   const toNewEntity = location.pathname && `/private/admin/${path}/new`
   const [list, setList] = useState([]);
-  const { data, loading, error } = useFetch(`http://localhost:3000/api/v1/${path}/`);
+  const { data, loading, error } = useFetch(`${BASE_URL}/${path}/`);
   const userState = useSelector((store: AppStore) => store.user);
   const token = userState.token;
 
@@ -28,13 +29,13 @@ const Datatable = ({ columns }) => {
   const handleDelete = async (id) => {
     try {
       if (path !== "rooms") {
-        await axios.delete(`http://localhost:3000/api/v1/${path}/${id}`, {
+        await axios.delete(`${BASE_URL}${path}/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
         });
       } else {
-        await axios.delete(`http://localhost:3000/api/v1/${path}/${id}`, {
+        await axios.delete(`${BASE_URL}${path}/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -82,7 +83,6 @@ const Datatable = ({ columns }) => {
     <div className="datatable">
       <div className="datatableTitle">
         {path.toUpperCase()}
-        {/* HAY QUE CAMBIAR TODOS LOS LINKS!!!!!!!!!!!!!!!!!!!!!!!!!! */}
         <span onClick={() => {
           navigate(toNewEntity, { replace: true });
         }} className="link">

@@ -22,17 +22,17 @@ const BodySection = () => {
                     <Route path={AdminRoutes.HOMEADMIN} element={<HomeAdmin />} />
                     <Route path={AdminRoutes.USERS}>
                         <Route index element={<List columns={userColumns} />} />
-                        <Route path=":userId" element={<Single />} />
+                        <Route path=":id" element={<Single />} />
                         <Route path="new" element={<New inputs={userInputs} title="Add new user" />} />
                     </Route>
                     <Route path={AdminRoutes.HOTELS}>
                         <Route index element={<List columns={hotelColumns} />} />
-                        <Route path=":productId" element={<Single />} />
+                        <Route path=":id" element={<Single />} />
                         <Route path="new" element={<NewHotel />} />
                     </Route>
                     <Route path={AdminRoutes.ROOMS}>
                         <Route index element={<List columns={roomColumns} />} />
-                        <Route path=":productId" element={<Single />} />
+                        <Route path=":id" element={<Single />} />
                         <Route path="new" element={<NewRoom />} />
                     </Route>
 

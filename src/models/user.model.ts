@@ -4,4 +4,8 @@ export interface UserInfo{
     email:string;
     role:string;
     token:string;
+    city:string;
+    country:string;
+    img:string;
+    phone:string;
 }

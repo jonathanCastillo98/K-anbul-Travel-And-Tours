@@ -8,6 +8,10 @@ export const EmptyUserState:UserInfo = {
     email:"",
     role:"",
     token:"",
+    city:"",
+    country:"",
+    img:"",
+    phone:"",
 }
 
 export const UserKey = "user";
