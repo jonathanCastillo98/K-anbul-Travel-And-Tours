@@ -7,9 +7,7 @@ import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { HiOutlineClipboardCheck } from 'react-icons/hi'
 
 const Main = () => {
-    const { data, loading, error } = useFetch("http://localhost:3000/api/v1/hotels/countByCity?cities=Merida,Motul");
 
-    console.log(data)
     return (
         <section className="main container section">
 

@@ -2,6 +2,7 @@ import "../../../../../../../styles/css/new.css";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../../../../../../models";
 
 const New = ({ inputs, title }) => {
     const [file, setFile] = useState("");
@@ -28,7 +29,7 @@ const New = ({ inputs, title }) => {
                 img: url,
             };
 
-            await axios.post("http://localhost:3000/api/v1/auth/register", newUser);
+            await axios.post(`${BASE_URL}/auth/register`, newUser);
         } catch (err) {
             console.log(err);
         }
