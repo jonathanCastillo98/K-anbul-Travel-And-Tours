@@ -23,8 +23,8 @@ const HotelList = () => {
     const location = useLocation();
 
     const [openDate, setOpenDate] = useState(false);
-    const [min, setMin] = useState(undefined);
-    const [max, setMax] = useState(undefined);
+    const [min, setMin] = useState<string | undefined>(undefined);
+    const [max, setMax] = useState<string | undefined>(undefined);
 
     const { data, loading, error, reFetch } = useFetch(`${BASE_URL}/hotels?city=${destination}&min=${min || 0}&max=${max || 10000}`);
 
