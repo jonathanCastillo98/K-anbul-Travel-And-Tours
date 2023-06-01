@@ -1,9 +1,11 @@
 import '../../../styles/css/footer.css'
 
+// Assets
 import video from '../../assets/playa4.mp4'
-
-import { FiSend } from 'react-icons/fi'
 import kanbul from '../../assets/kanbul.png'
+
+// Icons
+import { FiSend } from 'react-icons/fi'
 import { AiFillInstagram } from 'react-icons/ai'
 import { FiChevronRight } from 'react-icons/fi'
 
@@ -19,14 +21,14 @@ const Footer = () => {
                 <div className="contactDiv flex">
 
                     <div className="text">
-                        <small>KEEP IN TOUCH</small>
-                        <h2>Travel with us</h2>
+                        <small>Viaja más</small>
+                        <h2>Viaja con nosotros</h2>
                     </div>
 
                     <div className="inputDiv flex">
-                        <input type="text" placeholder='Enter Email Address' />
+                        <input type="text" placeholder='Ingresa tu correo' />
                         <button className="btn flex" type='submit'>
-                            SEND <FiSend className="icon" />
+                            Enviar <FiSend className="icon" />
                         </button>
                     </div>
 
@@ -41,7 +43,9 @@ const Footer = () => {
                         </div>
 
                         <div className="footerParagraph">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam inventore eos fuga hic cum voluptatem minima, tempore non odio provident nobis ipsam at, doloremque sed cupiditate ipsum in, atque soluta.
+                            K'anbul Travel and Tours es una agencia de viajes local, que nacio como parte
+                            una visión familiar, la cual con el paso del tiempo se ha convertido en la alegría y
+                            satisfacción de mucha gente y eso es lo que nos motiva cada dia.
                         </div>
 
                         <div className="footerSocials flex">
@@ -52,38 +56,38 @@ const Footer = () => {
                     <div className="footerLinks grid">
                         <div className="linkGroup">
                             <span className="groupTitle">
-                                OUR AGENCY
+                                Nuestra Agencia
                             </span>
 
                             <li className="footerList flex">
                                 <FiChevronRight className="icon" />
-                                Services
+                                Servicios
                             </li>
 
                             <li className="footerList flex">
                                 <FiChevronRight className="icon" />
-                                Insurance
+                                Seguro
                             </li>
 
                             <li className="footerList flex">
                                 <FiChevronRight className="icon" />
-                                Agency
+                                Agencia
                             </li>
 
                             <li className="footerList flex">
                                 <FiChevronRight className="icon" />
-                                Tourism
+                                Turismo
                             </li>
 
                             <li className="footerList flex">
                                 <FiChevronRight className="icon" />
-                                Payment
+                                Pagos
                             </li>
                         </div>
 
                         <div className="linkGroup">
                             <span className="groupTitle">
-                                PARTNERS
+                                Asociados
                             </span>
 
                             <li className="footerList flex">
@@ -111,41 +115,10 @@ const Footer = () => {
                                 TripAdvisor
                             </li>
                         </div>
-
-                        {/* <div className="linkGroup">
-                            <span className="groupTitle">
-                                LAST MINUTE
-                            </span>
-
-                            <li className="footerList flex">
-                                <FiChevronRight className="icon" />
-                                London
-                            </li>
-
-                            <li className="footerList flex">
-                                <FiChevronRight className="icon" />
-                                California
-                            </li>
-
-                            <li className="footerList flex">
-                                <FiChevronRight className="icon" />
-                                Indonesia
-                            </li>
-
-                            <li className="footerList flex">
-                                <FiChevronRight className="icon" />
-                                Europe
-                            </li>
-
-                            <li className="footerList flex">
-                                <FiChevronRight className="icon" />
-                                Oceania
-                            </li>
-                        </div> */}
                     </div>
 
                     <div className="footerDiv flex">
-                        <small>BEST TRAVEL WEBSITE THEME</small>
+                        <small>LA MEJOR AGENCIA DE VIAJES</small>
                         <small>COPYRIGHTS RESERVED - JONATHAN</small>
                     </div>
 

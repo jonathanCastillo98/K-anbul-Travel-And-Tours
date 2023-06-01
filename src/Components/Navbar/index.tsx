@@ -1,41 +1,47 @@
-import '../../../styles/css/navbar.css'
+import '../../../styles/css/navbar.css';
 
-import { useState } from 'react'
-
-import kanbul from '../../assets/kanbul.png'
-import { AiFillCloseCircle } from 'react-icons/ai';
-import { TbGridDots } from 'react-icons/tb';
+import { BaseSyntheticEvent, SyntheticEvent, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { AppStore } from '../../redux/store';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { UserInfo } from '../../models';
+
+// Assets
+import kanbul from '../../assets/kanbul.png';
+
+// Icons
+import { AiFillCloseCircle } from 'react-icons/ai';
+import { TbGridDots } from 'react-icons/tb';
 
 const Navbar = () => {
 
-    const [activeNavBar, setActiveNavBar] = useState("navBar");
-
-    const showNavBar = () => {
-        setActiveNavBar("navBar activeNavBar")
-    }
-
-    const removeNavBar = () => {
-        setActiveNavBar("navBar")
-    }
+    // State variables
+    const [activeNavBar, setActiveNavBar] = useState<string>("navBar");
 
     // To navigate other parte of the app
     const location = useLocation();
     const navigate = useNavigate();
 
     // Routes
-    const toLogin = location.pathname && `/login`
+    const toLogin = location.pathname && `/login`;
 
-    const handleOnLoginClick = () => {
+    // Handlers
+    const showNavBar: VoidFunction = () => {
+        setActiveNavBar("navBar activeNavBar")
+    }
+
+    const removeNavBar: VoidFunction = () => {
+        setActiveNavBar("navBar")
+    }
+
+    const handleOnLoginClick: VoidFunction = () => {
         navigate(toLogin, { replace: true });
     }
-    const handleOnNavbarLinkClick = (e) => {
-        console.log(e.target.value)
+    const handleOnNavbarLinkClick = (e: BaseSyntheticEvent) => {
+        navigate(`/${e.target.textContent}`, { replace: true });
     }
 
-    const userState = useSelector((store: AppStore) => store.user);
+    const userState: UserInfo = useSelector((store: AppStore) => store.user);
 
     return (
         <section className="navBarSection">
@@ -50,34 +56,27 @@ const Navbar = () => {
                 <div className={activeNavBar}>
                     <ul className="navLists flex">
                         <li className="navItem" value={"home"} onClick={handleOnNavbarLinkClick}>
-                            <span
-                                className="navLink"
-                            >Home</span>
+                            Inicio
                         </li>
 
-                        <li className="navItem" value={"packages"}>
-                            <a className="navLink"
-                                onClick={handleOnNavbarLinkClick}>Packages</a>
+                        <li className="navItem" value={"packages"} onClick={handleOnNavbarLinkClick}>
+                            Paquetes
                         </li>
 
-                        <li className="navItem" value={"tours"}>
-                            <a className="navLink"
-                                onClick={handleOnNavbarLinkClick}>Tours</a>
+                        <li className="navItem" value={"tours"} onClick={handleOnNavbarLinkClick}>
+                            Tours
                         </li>
 
-                        <li className="navItem" value={"carRental"}>
-                            <a className="navLink"
-                                onClick={handleOnNavbarLinkClick}>Car Rental</a>
+                        <li className="navItem" value={"carRental"} onClick={handleOnNavbarLinkClick}>
+                            Renta de carros
                         </li>
 
-                        <li className="navItem" value={"about"}>
-                            <a className="navLink"
-                                onClick={handleOnNavbarLinkClick}>About</a>
+                        <li className="navItem" value={"about"} onClick={handleOnNavbarLinkClick}>
+                            Nosotros
                         </li>
 
-                        <li className="navItem" value={"contact"}>
-                            <a className="navLink"
-                                onClick={handleOnNavbarLinkClick}>Contact</a>
+                        <li className="navItem" value={"contact"} onClick={handleOnNavbarLinkClick}>
+                            Contacto
                         </li>
 
                     </ul>
@@ -86,7 +85,7 @@ const Navbar = () => {
                         (<div>{userState.username}</div>) :
                         (<div className="registerBttns">
                             <button className="btn">
-                                <a>Register</a>
+                                <a>Sign up</a>
                             </button>
                             <button onClick={handleOnLoginClick} className="btn">
                                 <a>Login</a>

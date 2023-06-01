@@ -1,8 +1,8 @@
 import { Navigate, Route } from "react-router-dom"
-import { PrivateRoutes, Roles } from "../../models"
-import { RoutesWithNotFound } from "../../utilities"
 import { Admin } from "./Admin"
 import { RoleGuard } from "../../guards"
+import { PrivateRoutes, Roles } from "../../models"
+import { RoutesWithNotFound } from "../../utilities"
 
 const Private = () => {
     return (

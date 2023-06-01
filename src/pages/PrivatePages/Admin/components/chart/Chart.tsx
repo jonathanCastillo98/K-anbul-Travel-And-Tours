@@ -8,6 +8,11 @@ import {
     ResponsiveContainer,
 } from "recharts";
 
+type Props = {
+    aspect: number,
+    title: string,
+}
+
 const data = [
     { name: "January", Total: 1200 },
     { name: "February", Total: 2100 },
@@ -17,7 +22,7 @@ const data = [
     { name: "June", Total: 1700 },
 ];
 
-const Chart = ({ aspect, title }) => {
+const Chart = ({ aspect, title }: Props) => {
     return (
         <div className="chart">
             <div className="title">{title}</div>

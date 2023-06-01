@@ -1,24 +1,21 @@
 import "../../../../styles/css/login.css";
-// Import React Stuff
+
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import Cookies from "universal-cookie";
-
-import loginImg from '../../../assets/loginAssets/loginImg.jpg'
 import { getUserToken } from '../../../services';
-
-
 import { useDispatch } from 'react-redux';
 import { UserKey, logUser, resetUser } from '../../../redux/states/user';
 import { clearLocalStorage } from '../../../utilities';
 import { PrivateRoutes, PublicRoutes } from '../../../models';
 
+import loginImg from '../../../assets/loginAssets/loginImg.jpg'
+
+
+
 const Login = () => {
     // Stuff to control the form
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: { username: "", password: "" } });
-
-
 
     // To navigate other parte of the app
     const navigate = useNavigate();
@@ -29,7 +26,8 @@ const Login = () => {
         navigate(`/${PublicRoutes.LOGIN}`, { replace: false })
     }, [])
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+
     // Handlers
     const handleFormSubmit = async (e: any) => {
         try {

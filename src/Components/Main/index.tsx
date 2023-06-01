@@ -1,8 +1,8 @@
 import '../../../styles/css/main.css'
 
 import mockData from './data'
-import useFetch from '../../hooks/useFetch'
 
+// Icons
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { HiOutlineClipboardCheck } from 'react-icons/hi'
 
@@ -12,7 +12,7 @@ const Main = () => {
         <section className="main container section">
 
             <div className="secTitle">
-                <h3 className="title">Most visited destinations</h3>
+                <h3 className="title">Destinos más visitados</h3>
             </div>
 
             <div className="secContent grid">
@@ -49,7 +49,7 @@ const Main = () => {
                                     </div>
 
                                     <button className="btn flex">
-                                        DETAILS <HiOutlineClipboardCheck className="icon" />
+                                        DETALLES <HiOutlineClipboardCheck className="icon" />
                                     </button>
 
                                 </div>

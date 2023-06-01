@@ -1,5 +1,6 @@
-import { createContext, useState, useContext } from "react";
 import React from 'react';
+import { createContext, useState, useContext } from "react";
+import { DatesInfo, OptionsInfo } from "../models";
 
 type Props = {
     children: JSX.Element;
@@ -8,40 +9,24 @@ type Props = {
 interface DataContextType {
     destination: string;
     setDestination: React.Dispatch<React.SetStateAction<string>>;
-    dates: {
-        startDate: Date,
-        endDate: Date,
-        key: string
-    }[]
-    setDates: React.Dispatch<React.SetStateAction<{
-        startDate: Date,
-        endDate: Date,
-        key: string
-    }[]>>;
-    options: {
-        adult: number,
-        children: number,
-        room: number,
-    }
-    setOptions: React.Dispatch<React.SetStateAction<{
-        adult: number,
-        children: number,
-        room: number,
-    }>>;
+    dates: DatesInfo[];
+    setDates: React.Dispatch<React.SetStateAction<DatesInfo[]>>;
+    options: OptionsInfo;
+    setOptions: React.Dispatch<React.SetStateAction<OptionsInfo>>;
 }
 
 let DataContext = createContext<DataContextType>({} as DataContextType);
 
 export function DataContextProvider({ children }: Props) {
-    const [destination, setDestination] = useState("");
-    const [dates, setDates] = useState([
+    const [destination, setDestination] = useState<string>("");
+    const [dates, setDates] = useState<DatesInfo[]>([
         {
             startDate: new Date(),
             endDate: new Date(),
             key: "selection",
         },
     ]);
-    const [options, setOptions] = useState({
+    const [options, setOptions] = useState<OptionsInfo>({
         adult: 1,
         children: 0,
         room: 1,

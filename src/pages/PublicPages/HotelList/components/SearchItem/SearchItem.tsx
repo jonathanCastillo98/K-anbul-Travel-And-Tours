@@ -1,5 +1,5 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import "../../../../../../styles/css/searchItem.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
 type Props = {
     item: any

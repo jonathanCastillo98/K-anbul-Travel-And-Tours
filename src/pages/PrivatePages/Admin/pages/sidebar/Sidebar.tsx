@@ -1,4 +1,11 @@
 import "../../../../../../styles/css/sidebar.css";
+
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AdminRoutes, UserInfo } from "../../../../../models";
+import { useSelector } from "react-redux";
+import { AppStore } from "../../../../../redux/store";
+
+// Icons
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
@@ -7,13 +14,8 @@ import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AdminRoutes } from "../../../../../models";
-import { useSelector } from "react-redux";
-import { AppStore } from "../../../../../redux/store";
 
 const Sidebar = () => {
 
@@ -27,7 +29,7 @@ const Sidebar = () => {
     const toHotels = location.pathname && `/private/admin/${AdminRoutes.HOTELS}`;
     const toRooms = location.pathname && `/private/admin/${AdminRoutes.ROOMS}`;
 
-    const userState = useSelector((store: AppStore) => store.user);
+    const userState: UserInfo = useSelector((store: AppStore) => store.user);
 
     return (
         <div className="sidebar">
@@ -39,54 +41,54 @@ const Sidebar = () => {
             <hr />
             <div className="center">
                 <ul>
-                    <p className="title">MAIN</p>
+                    <p className="title">PRINCIPAL</p>
                     <li onClick={() => {
                         navigate(toHomeAdmin, { replace: true });
                     }}>
                         <DashboardIcon className="icon" />
-                        <span>Dashboard</span>
+                        <span>Panel</span>
                     </li>
-                    <p className="title">LISTS</p>
+                    <p className="title">LISTAS</p>
                     <li onClick={() => {
                         navigate(toUsers, { replace: true });
                     }}>
                         <PersonOutlineIcon className="icon" />
-                        <span>Users</span>
+                        <span>Usuarios</span>
                     </li>
                     <li onClick={() => {
                         navigate(toHotels, { replace: true });
                     }}>
                         <StoreIcon className="icon" />
-                        <span>Hotels</span>
+                        <span>Hoteles</span>
                     </li>
                     <li onClick={() => {
                         navigate(toRooms, { replace: true });
                     }}>
                         <CreditCardIcon className="icon" />
-                        <span>Rooms</span>
+                        <span>Cuartos</span>
                     </li>
-                    <p className="title">USEFUL</p>
+                    <p className="title">ÚTIL</p>
                     <li>
                         <InsertChartIcon className="icon" />
-                        <span>Stats</span>
+                        <span>Estadisticas</span>
                     </li>
                     <li>
                         <NotificationsNoneIcon className="icon" />
-                        <span>Notifications</span>
+                        <span>Notificaciones</span>
                     </li>
-                    <p className="title">SERVICE</p>
+                    <p className="title">SERVICIO</p>
                     <li>
                         <PsychologyOutlinedIcon className="icon" />
                         <span>Logs</span>
                     </li>
                     <li>
                         <SettingsApplicationsIcon className="icon" />
-                        <span>Settings</span>
+                        <span>Configuraciones</span>
                     </li>
-                    <p className="title">USER</p>
+                    <p className="title">Usuario</p>
                     <li>
                         <AccountCircleOutlinedIcon className="icon" />
-                        <span>Profile</span>
+                        <span>Perfil</span>
                     </li>
                     <li>
                         <ExitToAppIcon className="icon" />
