@@ -1,30 +1,30 @@
 import "../../../../../../../styles/css/newRoom.css";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
-import axios from "axios";
-import useFetch from "../../../../../../hooks/useFetch";
+
 import { roomInputs } from "../../../../../../formSource";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../../../../../redux/store";
-import { BASE_URL } from "../../../../../../models";
+import { BASE_URL, HotelInfo, HotelRoomInfo, RoomInfo, UserInfo } from "../../../../../../models";
+import { BaseSyntheticEvent, useState } from "react";
+import axios from "axios";
+import useFetch from "../../../../../../hooks/useFetch";
 
 const NewRoom = () => {
-    const [info, setInfo] = useState({});
-    const [hotelId, setHotelId] = useState(undefined);
-    const [rooms, setRooms] = useState([]);
+    const [info, setInfo] = useState<HotelRoomInfo | {}>({});
+    const [hotelId, setHotelId] = useState<string | undefined>(undefined);
+    const [rooms, setRooms] = useState<any>();
 
     const { data, loading, error } = useFetch(`${BASE_URL}/hotels`);
-    const userState = useSelector((store: AppStore) => store.user);
-    const token = userState.token;
+    const userState: UserInfo = useSelector((store: AppStore) => store.user);
+    const token: string = userState.token;
 
 
-    const handleChange = (e) => {
+    const handleChange = (e: BaseSyntheticEvent) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     };
 
-    const handleClick = async (e) => {
+    const handleClick = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
-        const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
+        const roomNumbers = rooms?.split(",").map((room: RoomInfo) => ({ number: room }));
         try {
             console.log(hotelId)
             await axios.post(`${BASE_URL}/rooms/${hotelId}`, { ...info, roomNumbers }, {
@@ -37,12 +37,11 @@ const NewRoom = () => {
         }
     };
 
-    console.log(info)
     return (
         <div className="new">
             <div className="newContainer">
                 <div className="top">
-                    <h1>Add New Room</h1>
+                    <h1>Crear nuevo cuarto:</h1>
                 </div>
                 <div className="bottom">
                     <div className="right">
@@ -59,14 +58,14 @@ const NewRoom = () => {
                                 </div>
                             ))}
                             <div className="formInput">
-                                <label>Rooms</label>
+                                <label>Cuartos</label>
                                 <textarea
-                                    onChange={(e) => setRooms(e.target.value)}
-                                    placeholder="give comma between room numbers."
+                                    onChange={(e: BaseSyntheticEvent) => setRooms(e.target.value)}
+                                    placeholder="Separar con una coma los números de cuarto."
                                 />
                             </div>
                             <div className="formInput">
-                                <label>Choose a hotel</label>
+                                <label>Elegir hotel</label>
                                 <select
                                     id="hotelId"
                                     onChange={(e) => setHotelId(e.target.value)}
@@ -74,12 +73,12 @@ const NewRoom = () => {
                                     {loading
                                         ? "loading"
                                         : data &&
-                                        data.map((hotel) => (
+                                        data.map((hotel: HotelInfo) => (
                                             <option key={hotel.id} value={hotel.id}>{hotel.name}</option>
                                         ))}
                                 </select>
                             </div>
-                            <button onClick={handleClick}>Send</button>
+                            <button onClick={handleClick}>Enviar</button>
                         </form>
                     </div>
                 </div>

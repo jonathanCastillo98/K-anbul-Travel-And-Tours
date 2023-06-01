@@ -1,13 +1,15 @@
 import "../../../../styles/css/hotelList.css";
-import Navbar from "../../../Components/Navbar";
+
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
-import SearchItem from "./components/SearchItem/SearchItem";
-import useFetch from "../../../hooks/useFetch";
 import { useDataContext } from "../../../context/SearchContext";
 import { BASE_URL } from "../../../models";
+
+import Navbar from "../../../Components/Navbar";
+import SearchItem from "./components/SearchItem/SearchItem";
+import useFetch from "../../../hooks/useFetch";
 
 const HotelList = () => {
     const { destination,
@@ -25,7 +27,6 @@ const HotelList = () => {
     const [max, setMax] = useState(undefined);
 
     const { data, loading, error, reFetch } = useFetch(`${BASE_URL}/hotels?city=${destination}&min=${min || 0}&max=${max || 10000}`);
-    console.log(data)
 
     const handleOnClick = () => {
         reFetch();
@@ -57,7 +58,7 @@ const HotelList = () => {
                             {openDate && (
                                 <div onClick={(e) => e.stopPropagation()}>
                                     <DateRange
-                                        onChange={(item) => setDates([item.selection])}
+                                        onChange={(item: any) => setDates([item.selection])}
                                         minDate={new Date()}
                                         ranges={dates}
                                     />

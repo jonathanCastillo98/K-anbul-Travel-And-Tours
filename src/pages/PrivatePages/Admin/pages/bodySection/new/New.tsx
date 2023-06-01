@@ -1,18 +1,26 @@
 import "../../../../../../../styles/css/new.css";
-import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+
+import { BaseSyntheticEvent, useState } from "react";
+import { BASE_URL, InputInfo, UserInfo } from "../../../../../../models";
 import axios from "axios";
-import { BASE_URL } from "../../../../../../models";
 
-const New = ({ inputs, title }) => {
-    const [file, setFile] = useState("");
-    const [info, setInfo] = useState({});
+// Icons
+import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 
-    const handleChange = (e) => {
+type Props = {
+    inputs: {}[],
+    title: string,
+}
+
+const New = ({ inputs, title }: Props) => {
+    const [file, setFile] = useState<string | any>("");
+    const [info, setInfo] = useState<UserInfo | {}>({});
+
+    const handleChange = (e: BaseSyntheticEvent) => {
         setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     };
 
-    const handleClick = async (e) => {
+    const handleClick = async (e: BaseSyntheticEvent) => {
         e.preventDefault();
         const data = new FormData();
         data.append("file", file);
@@ -35,7 +43,6 @@ const New = ({ inputs, title }) => {
         }
     };
 
-    console.log(info);
     return (
         <div className="new">
             <div className="newContainer">
@@ -62,12 +69,12 @@ const New = ({ inputs, title }) => {
                                 <input
                                     type="file"
                                     id="file"
-                                    onChange={(e) => setFile(e.target.files[0])}
+                                    onChange={(e: BaseSyntheticEvent) => setFile(e.target.files[0])}
                                     style={{ display: "none" }}
                                 />
                             </div>
 
-                            {inputs.map((input) => (
+                            {inputs.map((input: InputInfo | any) => (
                                 <div className="formInput" key={input.id}>
                                     <label>{input.label}</label>
                                     <input

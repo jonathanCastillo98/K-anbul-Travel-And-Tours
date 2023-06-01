@@ -1,16 +1,26 @@
-import { useLocation, useParams } from "react-router-dom";
 import "../../../../../../../styles/css/single.css";
-import useFetch from "../../../../../../hooks/useFetch";
+
+import { useLocation, useParams } from "react-router-dom";
 import { BASE_URL } from "../../../../../../models";
+import useFetch from "../../../../../../hooks/useFetch";
 import Chart from "../../../components/chart/Chart";
 import List from "../../../components/table/Table";
+import { useEffect, useState } from "react";
 
 const Single = () => {
     const location = useLocation();
     const path = location.pathname.split("/")[3];
+
+    // State variables
+    const [item, setItem] = useState<any>([]);
+
     const { id } = useParams();
     const { data, loading, error } = useFetch(`${BASE_URL}/${path}/${id}`)
-    console.log(data)
+
+    useEffect(() => {
+        setItem(data)
+    }, [data])
+
 
     return (
         <div className="single">
@@ -21,29 +31,29 @@ const Single = () => {
                         <h1 className="title">Information</h1>
                         <div className="item">
                             <img
-                                src={data.img}
+                                src={item.img}
                                 alt=""
                                 className="itemImg"
                             />
                             <div className="details">
-                                <h1 className="itemTitle">{data.username}</h1>
+                                <h1 className="itemTitle">{item.username}</h1>
                                 <div className="detailItem">
                                     <span className="itemKey">Email:</span>
-                                    <span className="itemValue">{data.email}</span>
+                                    <span className="itemValue">{item.email}</span>
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Phone:</span>
-                                    <span className="itemValue">{data.phone}</span>
+                                    <span className="itemValue">{item.phone}</span>
                                 </div>
-                                {data.address && <div className="detailItem">
+                                {item.address && <div className="detailItem">
                                     <span className="itemKey">Address:</span>
                                     <span className="itemValue">
-                                        {data.address}
+                                        {item.address}
                                     </span>
                                 </div>}
                                 <div className="detailItem">
                                     <span className="itemKey">Country:</span>
-                                    <span className="itemValue">{data.country}</span>
+                                    <span className="itemValue">{item.country}</span>
                                 </div>
                             </div>
                         </div>

@@ -1,14 +1,18 @@
 import "../../../../../../styles/css/datatable.css";
-import { DataGrid } from "@mui/x-data-grid";
-import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import useFetch from "../../../../../hooks/useFetch";
-import axios from "axios";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AppStore } from "../../../../../redux/store";
-import { BASE_URL } from "../../../../../models";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { BASE_URL, HotelInfo, HotelRoomInfo, UserInfo } from "../../../../../models";
+import useFetch from "../../../../../hooks/useFetch";
+import axios from "axios";
 
-const Datatable = ({ columns }) => {
+type Props = {
+  columns: GridColDef<{}>[],
+}
+
+const Datatable = ({ columns }: Props) => {
   // To navigate other parte of the app
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,17 +20,22 @@ const Datatable = ({ columns }) => {
   const path = location.pathname.split("/")[3];
 
   // Routes
-  const toNewEntity = location.pathname && `/private/admin/${path}/new`
+  const toNewEntity = location.pathname && `/private/admin/${path}/new`;
+
+  // State variables
   const [list, setList] = useState([]);
+
   const { data, loading, error } = useFetch(`${BASE_URL}/${path}/`);
-  const userState = useSelector((store: AppStore) => store.user);
-  const token = userState.token;
+
+  const userState: UserInfo = useSelector((store: AppStore) => store.user);
+  const token: string = userState.token;
 
   useEffect(() => {
     setList(data);
   }, [data]);
 
-  const handleDelete = async (id) => {
+  // Handlers
+  const handleDelete = async (id: number) => {
     try {
       if (path !== "rooms") {
         await axios.delete(`${BASE_URL}${path}/${id}`, {
@@ -42,13 +51,13 @@ const Datatable = ({ columns }) => {
         });
       }
 
-      setList(list.filter((item) => item.id !== id));
+      setList(list.filter((item: UserInfo | HotelInfo | HotelRoomInfo) => item.id !== id));
     } catch (error) {
       console.error(error)
     }
   };
 
-  const handleView = (id) => {
+  const handleView = (id: string) => {
     try {
       navigate(`/private/admin/${path}/${id}`, { replace: true })
     } catch (error) {
@@ -61,7 +70,7 @@ const Datatable = ({ columns }) => {
       field: "action",
       headerName: "Action",
       width: 130,
-      renderCell: (params) => {
+      renderCell: (params: any) => {
         return (
           <div className="cellAction">
             <div className="viewButton"
@@ -93,10 +102,8 @@ const Datatable = ({ columns }) => {
         className="datagrid"
         rows={list}
         columns={columns.concat(actionColumn)}
-        pageSize={3}
-        rowsPerPageOptions={[9]}
         checkboxSelection
-        getRowId={(row) => row.id}
+        getRowId={(row: any) => row.id}
       />
     </div>
   );
