@@ -22,6 +22,7 @@ const HotelList = () => {
 
     const location = useLocation();
 
+    // State variables
     const [openDate, setOpenDate] = useState(false);
     const [min, setMin] = useState<string | undefined>(undefined);
     const [max, setMax] = useState<string | undefined>(undefined);
