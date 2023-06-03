@@ -13,40 +13,42 @@
 }
 
 .wrapper{
-    width: 98.7vw;
+    width: 100vw;
     height: 100vh;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    .listContainer {
+
+    .listContainer{
         display: flex;
         justify-content: center;
-        margin-top: 20px;
-    
-        .listWrapper {
+        margin-top: 10px;
+
+        .listWrapper{
             width: 100%;
-            max-width: 1024px;
+            max-width: 500px;
             display: flex;
+            flex-direction: column;
             gap: 20px;
-    
+            padding: 0 1rem;
+
             .listSearch {
                 flex: 1;
                 background: var(--GradientColor);
                 box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
                 padding: 10px;
                 border-radius: 10px;
-                position: sticky;
-                top: 10px;
+                position: relative;
                 height: max-content;
-    
+
                 .lsTitle{
                     font-size: 20px;
                     color: var(--WhiteColor);
                     margin-bottom: 10px;
                 }
-    
+
                 .lsItem{
                     display: flex;
                     flex-direction: column;
@@ -87,23 +89,45 @@
                     align-items: center;
                     cursor: pointer;
                 }
-    
             }
-    
+
             .listSearch>button{
-                padding: 10px;
-                background-color: #0071c2;
-                color: white;
-                border: none;
-                width: 100%;
-                font-weight: 500;
-                cursor: pointer;
-            }
-    
-             .listResult {
-                flex: 3;
-            }
+                    padding: 10px;
+                    background-color: var(--TextColor);
+                    color: white;
+                    border: none;
+                    width: 100%;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
         }
-      }
-      
+    }
+
+}
+
+@media screen and (min-width:768px){
+    .wrapper{
+        width: 98.7vw;
+        height: 100vh;
+        
+        .listContainer {
+            margin-top: 20px;
+        
+            .listWrapper {
+                max-width: 1024px;
+                flex-direction: row;
+        
+                .listSearch {
+                    flex: 1;
+                    position: sticky;
+                    top: 10px;
+                }
+                        
+                 .listResult {
+                    flex: 3;
+                }
+            }
+          }
+          
+    }
 }

@@ -43,19 +43,19 @@ const HotelList = () => {
                     <div className="listSearch">
                         <h1 className="lsTitle">Search</h1>
                         <div className="lsItem">
-                            <label>Destination</label>
+                            <label>Destino</label>
                             <input placeholder={destination} type="text" onChange={(e) => setDestination(e.target.value)} />
 
                         </div>
                         <div className="lsItem">
-                            <label>Check-in Date</label>
+                            <label>Fecha de entrada</label>
                             <span onClick={(e) => {
                                 e.stopPropagation()
                                 setOpenDate(!openDate)
                             }}>{`${format(
                                 dates[0].startDate,
                                 "dd/MM/yyyy"
-                            )} to ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
+                            )} al ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
                             {openDate && (
                                 <div onClick={(e) => e.stopPropagation()}>
                                     <DateRange
@@ -67,22 +67,22 @@ const HotelList = () => {
                             )}
                         </div>
                         <div className="lsItem">
-                            <label>Options</label>
+                            <label>Opciones</label>
                             <div className="lsOptions">
                                 <div className="lsOptionItem">
                                     <span className="lsOptionText">
-                                        Min price <small>per night</small>
+                                        Precio min <small>por noche</small>
                                     </span>
                                     <input type="number" className="lsOptionInput" onChange={e => setMin(e.target.value)} />
                                 </div>
                                 <div className="lsOptionItem">
                                     <span className="lsOptionText">
-                                        Max price <small>per night</small>
+                                        Precio max <small>por noche</small>
                                     </span>
                                     <input type="number" className="lsOptionInput" onChange={e => setMax(e.target.value)} />
                                 </div>
                                 <div className="lsOptionItem">
-                                    <span className="lsOptionText">Adult</span>
+                                    <span className="lsOptionText">Adultos</span>
                                     <input
                                         type="number"
                                         min={1}
@@ -91,7 +91,7 @@ const HotelList = () => {
                                     />
                                 </div>
                                 <div className="lsOptionItem">
-                                    <span className="lsOptionText">Children</span>
+                                    <span className="lsOptionText">Niños</span>
                                     <input
                                         type="number"
                                         min={0}
@@ -100,7 +100,7 @@ const HotelList = () => {
                                     />
                                 </div>
                                 <div className="lsOptionItem">
-                                    <span className="lsOptionText">Room</span>
+                                    <span className="lsOptionText">Cuartos</span>
                                     <input
                                         type="number"
                                         min={1}
@@ -110,7 +110,7 @@ const HotelList = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={handleOnClick}>Search</button>
+                        <button onClick={handleOnClick}>Buscar</button>
                     </div>
                     <div className="listResult">
                         {loading ? "Loading" : <>
